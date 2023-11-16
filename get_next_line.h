@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:10:15 by aperron           #+#    #+#             */
-/*   Updated: 2023/11/15 18:07:05 by aperron          ###   ########.fr       */
+/*   Updated: 2023/11/16 15:28:53 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 5
 # endif
 
-char		*get_next_line(int fd);
+char	*get_next_line(int fd);
 
-int			is_new_line(int fd, char *saves[]);
+int		is_new_line(int fd, char *saves[]);
 
-char		*get_line(int fd, char *saves[]);
+char	*get_line1(int fd, char *saves[]);
 
-int			linelen(char *s);
+int		linelen(char *s, int stopatnl);
 
-char		*ft_strjoin(char *s1, char *s2);
+void	remove_line(int fd, char *saves[]);
 
-void		remove_line(int fd, char *saves[], int len);
+void	add_line(int fd, char *saves[], char *read_line);
 
-void		add_line(int fd, char *read_line);
+void	ft_bzero(void *s, size_t n);
+
+void	*ft_calloc(size_t count, size_t size);
+
+int		handle_error(int nb_chars_read, char *saves[], int fd, char *read_line);
 
 #endif
